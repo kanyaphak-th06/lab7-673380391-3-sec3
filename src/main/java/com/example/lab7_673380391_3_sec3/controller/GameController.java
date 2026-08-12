@@ -64,4 +64,18 @@ public class GameController {
         redirectAttributes.addFlashAttribute("message", "ลบข้อมูลเกมออกจากระบบเรียบร้อย!");
         return "redirect:/games";
     }
+
+    @PostMapping("/delete/{id}")
+public String deleteGame(@PathVariable Long id,
+                         RedirectAttributes redirectAttributes) {
+
+    gameService.deleteGame(id);
+
+    redirectAttributes.addFlashAttribute(
+        "successMessage",
+        "ลบข้อมูลเกมเรียบร้อยแล้ว!"
+    );
+
+    return "redirect:/games";
+}
 }
